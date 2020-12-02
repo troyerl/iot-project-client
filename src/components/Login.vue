@@ -22,7 +22,7 @@
           <b-alert show variant="danger">{{error}}</b-alert>
         </div>
 
-        <div>
+        <div class="text-center">
           <b-button type="submit" variant="primary" class="w-75">Login</b-button>
         </div>
       </b-form>
