@@ -32,6 +32,7 @@
         <b-button variant="danger" @click="onCancel">Cancel</b-button>
       </div>
     </b-modal>
+    <button class="logout-button" @click="onLogout"><b-icon class="h3" icon="arrow-bar-right"></b-icon></button>
   </div>
 </template>
 
@@ -87,6 +88,11 @@ export default {
     },
     toggleAddSensor() {
       this.addSensorBool = !this.addSensorBool;
+    },
+    onLogout() {
+      this.$store.dispatch('logout').then(() => {
+        this.$router.push('/login');
+      });
     }
   }
 }
@@ -95,5 +101,26 @@ export default {
 <style>
 .test {
   background: url("../../public/background.png");
+}
+.logout-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #C82333; /* Green */
+  border: 1px solid transparent;;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  width: 75px;
+  height: 75px;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  margin: 1% 1%;
+  cursor: pointer;
+  border-radius: 50%;
+  
 }
 </style>

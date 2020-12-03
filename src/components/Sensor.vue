@@ -6,7 +6,10 @@
       <div class="progress progress-bar-vertical progress-bar-animated">
         <div :class="`${showColor} progress-bar progress-bar-success active bg-success`" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" :style="showValue"></div>
       </div>
-      <b-button @click="deleteSensor(sensorInfo.id)" variant="danger" class="mt-2"><b-icon icon="trash"></b-icon></b-button>
+      <div class="mt-2">
+        <b-button @click="deleteSensor(sensorInfo.id)" variant="danger" class="mr-3"><b-icon icon="trash"></b-icon></b-button>
+        <b-button @click="requestUpdate(sensorInfo.id)" variant="primary"><b-icon icon="arrow-left-right"></b-icon></b-button>
+      </div>
     </div>
   </b-card>
 </template>
@@ -49,6 +52,9 @@ export default {
   methods: {
     deleteSensor(id) {
       this.$store.dispatch('deleteSensor', id);
+    },
+    requestUpdate(id) {
+      this.$store.dispatch('requestUpdate', id);
     }
   }
 }

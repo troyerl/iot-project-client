@@ -33,6 +33,10 @@ export default new Vuex.Store({
     },
     DELETE_SENSOR(state, idx) {
       state.sensors.splice(idx, 1);
+    },
+    CLEAR_STORE(state) {
+      state.user = null;
+      state.sensors = [];
     }
   },
   actions: {
@@ -102,6 +106,15 @@ export default new Vuex.Store({
         newSensors = state.sensors;
       }
       db.ref(`/users/${state.user.id}/sensors`).set(newSensors);
+    },
+    requestUpdate({ commit }, id) {
+      db.ref(`/sensors/${id}/userRequest`).set(true);
+    },
+    logout({ commit }) {
+      return new Promise(resolve => {
+        commit('CLEAR_STORE')
+        resolve();
+      })
     }
   },
   plugins: [vuexLocal.plugin]
