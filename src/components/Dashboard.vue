@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 d-flex justify-content-center align-content-center align-items-center test" style="height: 100vh;">
+  <div class="w-100 d-flex flex-column justify-content-center align-content-center align-items-center test" style="height: 100vh;">
     <b-card class="w-50">
       <div v-if="sensors.length > 0" class="d-flex flex-column justify-content-center align-content-center align-items-center">
         <h1 class="text-center">Sensors</h1>
@@ -15,6 +15,11 @@
         <b-button variant="success"><b-icon icon="plus" @click="toggleAddSensor"></b-icon></b-button>
       </div>
     </b-card>
+    <div class="d-flex justify-content-around mt-4">
+      <div class="dark-div color-info low-div">0%-30% (Needs watered badly)</div>
+      <div class="color-info mx-5 medium-div">31%-70% (Needs to be watered)</div>
+      <div class="dark-div color-info high-div">71%-100% (Does not need to be watered)</div>
+    </div>
     <b-modal v-model="addSensorBool" title="Add New Sensor" hide-footer centered>
       <b-form-group id="input-group-2" label="Sensor Name:" label-for="name">
         <input class="input-field" v-model="sensorInfo.name" id="name" placeholder="Enter Sensor Name"/>
@@ -121,6 +126,21 @@ export default {
   margin: 1% 1%;
   cursor: pointer;
   border-radius: 50%;
-  
+}
+.color-info {
+  padding: 10px;
+  border-radius: 5px;
+}
+.dark-div {
+  color: white;
+}
+.low-div {
+  background: #DC3545;
+}
+.medium-div {
+  background: #FFC107;
+}
+.high-div {
+  background: #28A745;
 }
 </style>

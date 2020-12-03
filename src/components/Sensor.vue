@@ -33,9 +33,9 @@ export default {
   },
   computed: {
     showColor() {
-      if (this.sensorInfo.value < 30) {
+      if (this.value < 30) {
         return 'bg-danger';
-      } else if (this.sensorInfo.value < 70) {
+      } else if (this.value < 70) {
         return 'bg-warning';
       } else {
         return 'bg-success';
